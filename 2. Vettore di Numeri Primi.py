@@ -17,16 +17,16 @@ print("Tipo di dato dell'array (dtype):", numeri_primi.dtype)  # Verifica del dt
 def is_primo(n):
     if n < 2:
         return False
-    if n in (2, 3):
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
     
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-    return True
+    div = 0
+    i = n
+    while i >= 1:
+        if n % i == 0:
+            div += 1
+            if div > 2: 
+                return False
+        i -= 1
+    
+    return div == 2
 
 array_num_primi = np.array([i for i in range(10) if is_primo(i)])
