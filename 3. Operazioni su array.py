@@ -1,7 +1,7 @@
 import numpy as np
 import random
 
-a = np.random.rand(10) * (1 - 1e-10) + 1e-10
+a = np.random.choice(array, size = 10) * (1 - 1e-10) + 1e-10
 b = a [1:4]
 c = np.flip(a)
 divisione = a / c
