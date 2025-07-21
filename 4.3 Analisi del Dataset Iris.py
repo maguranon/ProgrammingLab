@@ -6,7 +6,7 @@ url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
 df = pd.read_csv(url)
 df.head()
 
-print(df['species'].value_counts)
+print(df['species'].value_counts())
 media_petali = df.groupby('species')[['petal_length', 'petal_width']].mean()
 print(media_petali)
 
@@ -22,7 +22,7 @@ df['petal_area'] = df['petal_length'] * df['petal_width']
 print(df[['species', 'petal_area']].groupby('species').describe())
 
 plt.figure(figsize=(8,6))
-sns.scatterplot(data=df, x='species', y='petal_area')
+sns.boxplot(data=df, x='species', y='petal_area', palette="Set2")
 plt.title('Distribuzione dell’area del petalo per specie')
 plt.xlabel('Specie')
 plt.ylabel('Area del petalo')
