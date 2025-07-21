@@ -30,4 +30,7 @@ ages = np.array([92, 108, 75, 63, 62, 66, 90, 98, 97, 92, 60, 107, 90, 71, 97, 8
                  66, 91, 107, 65, 81, 109, 84, 106, 80, 92, 78, 84, 91, 59])
 
 age_clean = ages[ages != 999]
+print(f"Numero di valori validi: {len(age_clean)}")
+
 oldest = np.max(age_clean)
+print(f"L'età più alta nel dataset pulito è: {oldest}")
