@@ -1,3 +1,6 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
 num_videogiochi = len(df)
 print(f"Numero totale di videogiochi pubblicati: {num_videogiochi}")
 
