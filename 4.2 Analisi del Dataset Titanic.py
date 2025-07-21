@@ -4,7 +4,6 @@ import seaborn as sns
 
 url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
 df = pd.read_csv(url)
-df.head()
 
 print(f"Dimensioni del dataset: {df.shape} (righe, colonne)")
 
