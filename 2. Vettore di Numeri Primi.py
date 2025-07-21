@@ -30,3 +30,4 @@ def is_primo(n):
     return div == 2
 
 array_num_primi = np.array([i for i in range(10) if is_primo(i)])
+print("Numeri primi tra 0 e 9:", array_num_primi)
