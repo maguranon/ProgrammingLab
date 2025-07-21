@@ -12,6 +12,6 @@ tranne_vendite_maggiori_di_13_2018 = sales[~((sales['sales'] > 13) & (sales['yea
 
 # 5. Mostrami i dati dove le vendite divise per 3 sono maggiori di 3
 vendite_divise_per_3_maggiori_di_3 = sales[sales['sales'] / 3 > 3]
-4. Rispondere alle domande
+
 # 6. Mostrami i dipendenti i cui nomi sono alfabeticamente dopo la J
 dipendenti_dopo_J = sales[sales['employee'] > 'J']
