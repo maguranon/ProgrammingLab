@@ -6,12 +6,10 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
 
-# 1. Genera i dati sintetici
 np.random.seed(42)
 x = np.linspace(-3, 3, 100)
 y = x**3 - x + np.random.normal(0, 2, size=len(x))  # y = x³ - x + rumore
 
-# 2. Crea l'app Dash
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
@@ -34,32 +32,26 @@ app.layout = html.Div([
     html.Div(id='rmse-output', style={'textAlign': 'center', 'fontSize': 18})
 ])
 
-# 3. Callback per aggiornare il grafico
 @app.callback(
     [Output('regression-plot', 'figure'),
      Output('rmse-output', 'children')],
     [Input('degree-slider', 'value')]
 )
 def update_graph(degree):
-    # Crea il modello polinomiale
     model = make_pipeline(
         PolynomialFeatures(degree=degree),
         LinearRegression()
     )
     model.fit(x.reshape(-1, 1), y)
     
-    # Predizioni
     x_range = np.linspace(-3, 3, 500)
     y_pred = model.predict(x_range.reshape(-1, 1))
     
-    # Calcola RMSE
     y_pred_all = model.predict(x.reshape(-1, 1))
     rmse = np.sqrt(np.mean((y - y_pred_all)**2))
     
-    # Crea il grafico
     fig = go.Figure()
     
-    # Aggiungi dati originali
     fig.add_trace(go.Scatter(
         x=x,
         y=y,
@@ -68,7 +60,6 @@ def update_graph(degree):
         marker=dict(color='blue', size=8, opacity=0.7)
     ))
     
-    # Aggiungi curva di regressione
     fig.add_trace(go.Scatter(
         x=x_range,
         y=y_pred,
@@ -77,7 +68,6 @@ def update_graph(degree):
         line=dict(color='red', width=3)
     ))
     
-    # Personalizza layout
     fig.update_layout(
         title=f'Regressione Polinomiale (Grado {degree})',
         xaxis_title='x',
@@ -88,11 +78,9 @@ def update_graph(degree):
         showlegend=True
     )
     
-    # Testo con RMSE
     rmse_text = f"RMSE: {rmse:.4f}"
     
     return fig, rmse_text
 
-# Esegui l'app
 if __name__ == '__main__':
     app.run_server(debug=True, port=8051)
