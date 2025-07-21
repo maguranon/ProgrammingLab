@@ -2,6 +2,8 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
+random.seed(42)
+
 def simula_lanci(n):
     teste = 0
     for _ in range (n):
@@ -18,11 +20,11 @@ for n in campioni:
     frequenze_teste.append(freq)
 
 plt.figure(figsize=(10,6))
-plt.plot(campioni, frequenze_teste, maker='o', linestyle='-', color='blue')
+plt.plot(campioni, frequenze_teste, marker='o', linestyle='-', color='blue')
 plt.axhline(50, color='red', linestyle='--', label='Probabilità teorica (50%)')
 plt.title("Legge dei grandi numeri - Frequenza di Teste")
-plot.xlabel("Numero di lanci (campione)")
-plot.ylabel("Frequenza % di teste")
-plot.legend()
-plot.grid(True)
-plot.show()
+plt.xlabel("Numero di lanci (campione)")
+plt.ylabel("Frequenza % di teste")
+plt.legend()
+plt.grid(True)
+plt.show()
