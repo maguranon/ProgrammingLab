@@ -11,11 +11,12 @@ grouped_country = df.groupby('country')['salary_year_avg'].agg(    salary_mean='
     job_count='count',
     salary_min='min',
     salary_max='max'
-    ).reset.index()
+    ).reset_index()
 
-job_salary = df.groupby('job_title_short')['salary_year_avg'].mean().sort_values(ascending = True)
+job_salary = df.groupby('job_title_short')['salary_year_avg'].mean().sort_values(ascending = False)
 
 plt.figure(figsize=(10,8))
+plt.barh(job_salary.index, job_salary.values, color='skyblue')
 plt.title('Stipendio Medio Annuale per Tipo di Lavoro')
 plt.xlabel('Stipendio Medio')
 plt.ylabel('Tipo di Lavoro')
