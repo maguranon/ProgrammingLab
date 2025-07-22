@@ -11,8 +11,7 @@ Prova a rispondere senza eseguire il codice e
 verifica la tua risposta accedendo all'attributo .dtype del vettore.
 '''
 
-# Il dtype dovrebbe essere int (intero)
-print("Tipo di dato dell'array (dtype):", numeri_primi.dtype)  # Verifica del dtype
+print("Tipo di dato dell'array (dtype):", numeri_primi.dtype)  
 
 def is_primo(n):
     if n < 2:
