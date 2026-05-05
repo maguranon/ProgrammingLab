@@ -1,0 +1,10 @@
+import numpy as np
+
+array = np.random.random((10,3))
+
+distanza = np.abs(array - 0.5)
+
+indici = np.argmin(distanza, axis = 1)
+
+righe = np.arange(10)
+Valoro_vicini = array[righe, indici]
