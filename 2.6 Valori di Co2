@@ -1,1 +1,18 @@
+import numpy as np
 
+co2_data = np.loadtxt('../../dati/emissioni.txt')
+
+soglia = 18
+sopra_soglia = co2_data[co2_data > soglia]
+
+conteggio = len(sopra_soglia)
+valore_medio = np.mean(sopra_soglia)
+
+print(f"Numero di valori sopra {soglia}: {conteggio}")
+print(f"Valore medio sopra la soglia: {valore_medio:.2f} tonnellate")
+
+somma_sopra_soglia = np.sum(sopra_soglia)
+somma_totale = np.sum(co2_data)
+frazione = somma_sopra_soglia / somma_totale
+
+print(f"Frazione di emissioni sopra la soglia: {frazione.4f} ({frazione*100:.2f}%)")
