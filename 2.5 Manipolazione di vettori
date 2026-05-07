@@ -1,1 +1,24 @@
+import numpy as np
 
+stipendi = np.array([50000, 105250, 55000, 89000], dtype=float)
+costo_iniziale = np.sum(stipendi)
+print(f"Costo iniziale: {costo_iniziale}")
+
+indice_ceo = np.argmax(stipendi)
+stipendi[indice_ceo] *= 1.15
+
+print(f"121037 presente? {121037.5 in stipendi}")
+
+indice_min = np.argmin(stipendi)
+stipendi[indice_min] *= 1.20
+
+valore_ceo = stipendi[indice_ceo]
+valore_min = stipendi[indice_min]
+maschera = (stipendi != valore_ceo) & (stipendi != valore_min)
+stipendi[maschera] *= 1.10
+
+print(f"Stipendi finali: {stipendi}")
+
+costo_finale = np.sum(stipendi)
+print(f"Costo finale: {costo_finale}")
+print(f"Aumento totale: {costo_finale - costo_iniziale}")
