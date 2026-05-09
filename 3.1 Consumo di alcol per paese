@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv")
+
+top10 = df.sort_values(by="total_litres_of_pure_alcohol", ascending=False).head(10)
+print(top10[["country", "total_litres_of_pure_alcohol"]])
+
+print("Media birra:", df["beer_servings"].mean())
+print("Media vino:", df["wine_servings"].mean())
+print("Media distillati:", df["spirit_servings"].mean())
+
+df["alcohol_index"] = (df["beer_servings"] + df["wine_servings"] + df["spirit_servings"]) / 3
+
+indice_max = df["alcohol_index"].idxmax()
+paese_max = df.loc[indice_max]
+print("Paese con alcohol_index massimo:", paese_max["country"])
+
+birre_100 = df[df["beer_servings"] > 100]
+print(birre_100[["country", "beer_servings"]])
+
+plt.bar(top10["country"], top10["total_litres_of_pure_alcohol"])
+plt.xsticks(rotation=90)
+plt.show()
+
+df_sorted = df.sort_values(by="country")
+plt.plot(df_sorted["wine_servings"])
+plt.show()
