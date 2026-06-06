@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+df = pd.read_csv(url)
+df.head()
+
+df.['Age'].fillna(df.['Age'].mean(), inplace=TRUE)
+df.['Embarked'].fillna(df.['Embarked'].mode(), inplace=TRUE)
+
+fig, axes = plt.subplot(nrows=1, ncols=2, figsize=(12,7))
+
+sns.histplot(data=df[df['Sex'] == 'male'], x="Age", hue="PClass", hue=True, alpha=0.5, ax=axes[0])
+sns.histplot(data=df[df['Sex'] == 'female'], x="Age", hue="PClass", hue=True, alpha=0.5, ax=axes[0])
+
+axes[0].set_title('Maschi')
+axes[1].set_title('Femmine')
+fig.suptitle('Distribuzione dell\'età per classe e sesso')
+plt.tight_layout() 
+plt.show()
