@@ -1,1 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
 
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
+
+df = pd.read_csv(url)
+
+stats = df.groupby("day").agg(
+  conto_medio = ("total_bill", "mean"), 
+  numero_osservazioni = ("total_bill", "count), 
+  conto_mix = ("total_bill", "min"), 
+  conto_max = ("total_bill", "max"), 
+)
+
+df["conto_per_persona"] = df["total_bill"] / df["size"]
+
+giorno_max = stats["conto_medio"].idxmax()
+print("Giorno con conto medio più alto:", giorno_max)
+
+stats_sorted = stats.sort_values(by="conto_medio", ascending=False)
+
+plt.bar(stats_sorted.index, stats_sorted["conto_medio"])
+plt.title("Conto medio per giorno")
+plt.xlabel("Giorno")
+plt.ylabel("Conto medio (USD)")
+plt.show()
