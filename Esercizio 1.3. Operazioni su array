@@ -4,9 +4,23 @@ a = np.arange(10)
 b = a[1:5]
 c = a[::-1]
 
-d = d/a 
+d = a/c 
 
 print(f"a = {a}")
 print(f"b = {b}")
 print(f"c = {c}")
 print(f"d = a / c = {d}")
+
+a_lista = []
+a_lista = range(1, 10)
+b_lista = a_lista[1:5]
+c_lista = a_lista[::-1]
+
+d_lista = []
+for i in range(len(a_lista)):
+d_lista.append(a_lista[i] / c_lista[i])
+
+print(f"a = {a_lista}")
+print(f"b = {b_lista}")
+print(f"c = {c_lista}")
+print(f"d = a / c = {d_lista}")
