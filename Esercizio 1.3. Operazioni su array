@@ -1,0 +1,12 @@
+import numpy as np
+
+a = np.arange(10)
+b = a[1:5]
+c = a[::-1]
+
+d = d/a 
+
+print(f"a = {a}")
+print(f"b = {b}")
+print(f"c = {c}")
+print(f"d = a / c = {d}")
