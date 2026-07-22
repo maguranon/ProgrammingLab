@@ -1,0 +1,12 @@
+import numpy as np
+num_primi = np.array([2, 3, 5, 7, 11, 13, 17, 19])
+
+num_primi_mag10 = num_primi > 10
+
+print(num_primi_mag10)
+print(num_primi[num_primi_mag10])
+
+pari = num_primi % 2 == 0
+
+print(pari)
+print(num_primi[pari])
