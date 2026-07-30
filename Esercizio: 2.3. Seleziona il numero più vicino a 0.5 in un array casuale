@@ -1,0 +1,12 @@
+ import numpy as np
+
+array = np.random.rand(10, 3)
+
+print("Array:")
+print(array)
+
+indici = np.abs(array - 0.5).argmin(axis=1)
+risultato = array[np.arange(array.shape[0]), indici]
+
+print("Risultato:")
+print(risultato)
