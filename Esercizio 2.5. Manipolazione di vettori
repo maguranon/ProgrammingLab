@@ -1,0 +1,24 @@
+import numpy as np
+
+vettore = np.array([50000, 105250, 55000, 89000], dtype=float)
+costo = np.sum(vettore)
+print(f"Costo iniziale: {costo}")
+
+indice_max = np.argmax(vettore)
+costo[indice_max] *= 1.15
+stipendio_ceo = costo[indice_max]
+
+indice_min = np.argmin(vettore)
+costo[indice_min] *= 1.20
+stipendio_min = costo[indice_min]
+
+indici = np.arange(len(vettore))
+altri = indici[(indici != indice_max) & (indici != indice_min)]
+
+vettore[altri] *= 1.10
+
+print(f"Stipendi finali: {vettore}")
+
+costo_finale = np.sum(vettore)
+print(f"Costo finale: {costo_finale}")
+print(f"Aumento totale: {costo_finale - costo}")
