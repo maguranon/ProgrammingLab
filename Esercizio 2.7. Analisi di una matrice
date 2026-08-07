@@ -1,0 +1,12 @@
+import numpy as np
+
+survey_matrix = np.array([ [25, 40000, 10], [32, 52000, 12], [40, 63000, 14], [29, 47000, 11], [35, 58000, 13] ])
+anni_istruzione = survey_matrix[survey_matrix[:, 2] >= 12]
+print("anni d'istruzione maggiori di 12")
+print(anni_istruzione)
+redditi = survey_matrix[survey_matrix[:, 2] >= 12, 1]
+print("redditi di chi ha anni d'istruzione maggiori di 12")
+print(redditi)
+reddito_medio = np.mean(survey_matrix[survey_matrix[:, 2] >= 12, 1])
+print("media redditi di chi ha anni d'istruzione maggiori di 12")
+print(reddito_medio)
