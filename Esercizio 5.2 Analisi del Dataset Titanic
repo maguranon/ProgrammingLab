@@ -1,0 +1,34 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+df = pd.read_csv(url)
+df.head()
+
+print("Numero di righe:", df.shape[0])
+print("Numero di colonne:", df.shape[1])
+print("Numero di valori mancanti ci sono per colonna", df.isnull().sum())
+
+valore_frequente = df["Embarked"].mode()[0]
+df["Embarked"] = df["Embarked"].fillna(valore_frequente)
+
+print("Righe duplicate:", df.duplicated().sum())
+età_media_passeggeri_classe = df.groupby("Pclass")["Age"].mean()
+print("Numero dell'età media dei passeggeri per ogni classe", età_media_passeggeri_classe)
+
+media_per_classe = df.groupby("Pclass")["Age"].mean()
+
+df["Age"] = df["Age"].fillna(df["Pclass"].map(media_per_classe))
+
+sns.boxplot(data=df, x="Pclass", y="Age")
+plt.title("Distribuzione dell'età per classe")
+plt.xlabel("Classe")
+plt.ylabel("Età")
+plt.show()
+
+sns.boxplot(data=df, x="Pclass", y="Age", hue="Sex")
+plt.title("Distribuzione dell'età per classe e sesso")
+plt.xlabel("Classe")
+plt.ylabel("Età")
+plt.show()
