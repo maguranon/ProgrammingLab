@@ -13,13 +13,13 @@ print(df["species"].value_counts())
 
 df["species"].value_counts().plot(kind="bar")
 plt.xlabel("Specie")
-plt.label("Numero di campioni")
+plt.ylabel("Numero di campioni")
 plt.title("Distribuzione delle specie")
 plt.show()
 
 print("\nDimensioni medie dei petali:")
 media = df.groupby("species")[["petal_length", "petal_width"]].mean()
-print(medie)
+print(media)
 
 sns.scatterplot(
 data=df,
@@ -29,13 +29,13 @@ hue="species"
 )
 
 plt.xlabel("Lunghezza del petalo")
-plt.label("Larghezza del petalo")
+plt.ylabel("Larghezza del petalo")
 plt.title("Dimensioni dei petali per specie")
 plt.show()
 
 df["petal_area"] =  df["petal_length"] * df["petal_width"]
 print("\nArea media del petalo per specie:")
-print(df.groupby("species")["petal_area"].mean)
+print(df.groupby("species")["petal_area"].mean())
 
 sns.boxplot(
 data=df, 
@@ -44,6 +44,6 @@ y="petal_area"
 )
 
 plt.xlabel("Specie")
-plt.label("Area del petalo")
+plt.ylabel("Area del petalo")
 plt.title("Distribuzione dell'area del petalo per specie")
 plt.show()
