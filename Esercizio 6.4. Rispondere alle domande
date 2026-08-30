@@ -1,0 +1,43 @@
+import pandas as pd
+
+sales = pd.DataFrame(
+    data={
+        "employee": [
+            "Katrina",
+            "Guanyu",
+            "Jan",
+            "Roman",
+            "Jacqueline",
+            "Paola",
+            "Esperanza",
+            "Alaina",
+            "Egweyn",
+        ],
+        "sales": [14, 17, 6, 12, 8, 3, 7, 15, 5],
+        "year": [2018, 2019, 2020, 2018, 2020, 2019, 2019, 2020, 2020],
+    }
+)
+
+print("Vendite maggiori di 10:")
+vendite_maggiori_10 = sales[sales["sales"] > 10]
+print(vendite_maggiori_10)
+
+print("\nDati del 2018:")
+dati_2018 = sales[sales["year"] == 2018]
+print(dati_2018)
+
+print("\nVendite maggiori di 13 e anno 2018:")
+vendite_magg_13_2018 = sales[(sales["sales"] > 13) & (sales["year"] == 2018)]
+print(vendite_magg_13_2018)
+
+print("\nTutto tranne vendite maggiori di 13 nell'anno 2018:")
+no_vendite_magg_13_2018 = sales[~((sales["sales"] > 13) & (sales["year"] == 2018))]
+print(no_vendite_magg_13_2018)
+
+print("\nVendite divise per 3 maggiori di 3:")
+vendite_maggiori_3 = sales[(sales["sales"] / 3) > 3]
+print(vendite_maggiori_3)
+
+print("\nDipendenti alfabeticamente dopo la J:")
+dipendenti_J = sales[sales["employee"] > "J"]
+print(dipendenti_J)
