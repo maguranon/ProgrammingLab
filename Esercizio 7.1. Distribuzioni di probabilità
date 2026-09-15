@@ -1,0 +1,44 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy as sp
+
+distribuzione_gamma = sp.stats.gamma(a=1)
+
+campione = distribuzione_gamma.rvs(size=1000)
+
+plt.figure(figsize=(10,5))
+plt.hist(campione, bins=30, density=True, alpha=0.6, color='skyblue', edgecolor='black', label='Istogramma del campione')
+
+max_val = np.max(campione)
+x =np.linspace(0, max_val, 1000)
+
+plt.plot(x, distribuzione_gamma.pdf(x), 'r-', lw=2, label='PDF teorica')
+
+plt.title("Istogramma e PDF della Distribuzione Gamma")
+plt.xlabel("Valore")
+plt.ylabel("Densità")
+plt.legend()
+plt.show()
+
+parametri_stimati = sp.stats.gamma.fit(campione)
+forma_stimata = parametri_stimati[0]
+
+print("Parametro di forma reale: 1")
+print(f"Parametro di forma stimato dal campione: {forma_stimata}\n")
+
+plt.figure(figsize=(10,5))
+
+plt.plot(x, distribuzione_gamma.cdf(x), 'g-', lw=2, label='CDF teorica')
+
+plt.title("Funzione di Distribuzione Cumulativa (CDF)")
+plt.xlabel("Valore")
+plt.ylabel("Probabilità cumulativa")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+
+varianza_teorica = distribuzione_gamma.var()
+varianza_campione = np.var(campione, ddof=1)
+
+print(f"Varianza teorica della distribuzione: {varianza_teorica}")
+print(f"Varianza stimata dal campione: {varianza_campione}")
