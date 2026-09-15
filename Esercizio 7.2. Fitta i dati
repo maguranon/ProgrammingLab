@@ -1,0 +1,43 @@
+import numpy as np
+temp_max = np.array([17, 19, 21, 28, 33, 38, 37, 37, 31, 23, 19, 18])
+temp_min = np.array([-62, -59, -56, -46, -32, -18, -9, -13, -25, -46, -52, -58])
+import matplotlib.pyplot as plt
+
+x = np.arange(1, 13)
+
+coeff_max = np.polyfit(x, temp_max, 4)
+coeff_min = np.polyfit(x, temp_min, 4)
+
+pred_max = np.polyval(coeff_max, x)
+pred_min = np.polyval(coeff_min, x)
+
+mae_max = np.mean(np.abs(temp_max - pred_max))
+mae_min = np.mean(np.abs(temp_min - pred_min))
+
+rmse_max = np.sqrt(np.mean((temp_max - pred_max) ** 2))
+rmse_min = np.sqrt(np.mean((temp_min - pred_min) ** 2))
+
+print("Temperatura massima")
+print("MAE:", mae_max)
+print("RMSE:", rmse_max)
+
+print("\nTemperatura minima")
+print("MAE:", mae_min)
+print("RMSE:", rmse_min)
+
+x_curva = np.linspace(1, 12, 100)
+
+curva_max = np.polyval(coeff_max, x_curva)
+curva_min = np.polyval(coeff_min, x_curva)
+
+plt.scatter(x, temp.max, label="Temperatura max")
+plt.scatter(x, temp.min, label="Temperatura min")
+
+plt.plot(x_curva, curva_max, label="Fit max")
+plt.plot(x_curva, curva_min, label="Fit min")
+
+plt.xlabel("Mese")
+plt.ylabel("Temperatura")
+plt.legend()
+plt.grid()
+plt.show()
