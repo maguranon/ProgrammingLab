@@ -5,6 +5,20 @@ from sklearn.linear_model import LinearRegression
 # Load dataset from URL
 df = pd.read_csv('https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv')
 
-# Display the dataframe
-df
+X = df[['disp']]
+y = df['mpg']
 
+model = LinearRegression()
+model.fit(X, y)
+
+print("Coefficiente:", model.coef_[0])
+print("Intercetta:", model.intercept_)
+
+y_pred = model.predict(X)
+
+plt.scatter(X, y)
+plt.plot(X, y_pred)
+
+plt.xlabel("Displacement (disp)")
+plt.ylabel("Miles per Gallon (mpg)")
+plt.show()
