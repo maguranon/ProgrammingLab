@@ -18,7 +18,7 @@ c_lista = a_lista[::-1]
 
 d_lista = []
 for i in range(len(a_lista)):
-d_lista.append(a_lista[i] / c_lista[i])
+  d_lista.append(a_lista[i] / c_lista[i])
 
 print(f"a = {a_lista}")
 print(f"b = {b_lista}")
