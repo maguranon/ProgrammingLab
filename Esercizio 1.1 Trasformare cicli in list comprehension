@@ -28,7 +28,7 @@ for parola in parole:
   if len(parola) > 4:
     parole_lunghe_maiuscole.append(parola.upper())
 
-parole_lunghe_maiuscole2 = [parola.upper() for n parola in parole if len(parola) > 4]
+parole_lunghe_maiuscole2 = [parola.upper() for parola in parole if len(parola) > 4]
 
 print("\nParole trasformate con il ciclo for:", parole_lunghe_maiuscole)
 print("Parole trasformate con la list comprehension:", parole_lunghe_maiuscole2)
