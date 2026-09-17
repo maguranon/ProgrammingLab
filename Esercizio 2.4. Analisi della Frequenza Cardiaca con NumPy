@@ -4,6 +4,10 @@ freq = np.array([68, 65, 77, 110, 160, 161, 162, 161, 160, 161, 162, 163, 164, 1
 minima = np.min(freq)
 massima = np.max(freq)
 
-sopra_120 = array > 120
+sopra_120 = freq > 120
 
 percentuale = np.mean(sopra_120) * 100
+
+print(f"Frequenza minima: {minima}")
+print(f"Frequenza massima: {massima}")
+print(f"Percentuale di valori sopra 120: {percentuale:.2f}%")
