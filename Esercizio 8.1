@@ -16,7 +16,7 @@ X = df[["mese_numerico"]]
 y = df["passengers"]
 
 grado = 3
-model = (make_pipeline(PolynomialFeatures(grado), LinearRegression())
+model = make_pipeline(PolynomialFeatures(grado), LinearRegression()
 model.fit(X, y)
 y_pred = model.predict(X)
 
@@ -26,14 +26,14 @@ print("RMSE:", rmse)
 fig = go.Figure()
 
 fig.add_trace(go.Scatter(
-x=df["date"]
+x=df["date"],
 y=y, 
 mode="markers", 
 name="Dati reali"
 ))
 
 fig.add_trace(go.Scatter(
-x=df["date"]
+x=df["date"],
 y=y_pred, 
 mode="lines", 
 name="Regressione polinomiale"
