@@ -30,8 +30,8 @@ x_curva = np.linspace(1, 12, 100)
 curva_max = np.polyval(coeff_max, x_curva)
 curva_min = np.polyval(coeff_min, x_curva)
 
-plt.scatter(x, temp.max, label="Temperatura max")
-plt.scatter(x, temp.min, label="Temperatura min")
+plt.scatter(x, temp_max, label="Temperatura max")
+plt.scatter(x, temp_min, label="Temperatura min")
 
 plt.plot(x_curva, curva_max, label="Fit max")
 plt.plot(x_curva, curva_min, label="Fit min")
