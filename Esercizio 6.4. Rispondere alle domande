@@ -39,5 +39,5 @@ vendite_maggiori_3 = sales[(sales["sales"] / 3) > 3]
 print(vendite_maggiori_3)
 
 print("\nDipendenti alfabeticamente dopo la J:")
-dipendenti_J = sales[sales["employee"] > "J"]
+dipendenti_J = sales[sales["employee"].str[0] > "J"]
 print(dipendenti_J)
