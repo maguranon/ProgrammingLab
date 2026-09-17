@@ -6,10 +6,12 @@ df = dataset['train'].to_pandas()
 
 df['job_posted_date'] = pd.to_datetime(df['job_posted_date'])
 
-stipendio_medio = df.groupby('job_country')['salary_year_avg'].mean()
 offerte_lavoro_tot = df['job_country'].value_counts()
-stipendio_massimo = df.groupby('job_country')['salary_year_avg'].max()
-stipendio_minimo = df.groupby('job_country')['salary_year_avg'].min()
+statistiche_paese = df.groupby('job_country')['salary_year_avg'].agg(
+    stipendio_medio='mean',
+    stipendio_massimo='max',
+    stipendio_minimo='min'
+)
 
 print("Stipendio medio:")
 print(stipendio_medio)
@@ -26,9 +28,12 @@ print(stipendio_minimo)
 stipendio_per_lavoro = df.groupby('job_title_short')['salary_year_avg'].mean()
 stipendio_per_lavoro = stipendio_per_lavoro.sort_values(ascending=False)
 
+plt.figure(figsize=(10, 6))
 stipendio_per_lavoro.plot(
 kind='barh', 
 title='Stipendio medio annuale per tipo di lavoro',
 xlabel='Stipendio medio annuale',
 ylabel='Tipo di lavoro'
 )
+plt.tight_layout()
+plt.show()
