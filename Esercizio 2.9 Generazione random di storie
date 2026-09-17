@@ -12,7 +12,7 @@ lista_parole = [
 storia = ("In epoche passate, viveva una donna saggia che era molto orgogliosa dell'antico __ che proteggeva. Quando un anziano del villaggio venne a chiederle consiglio su come garantire al meglio un raccolto abbondante e le offrì il __ come dono, i suoi occhi si spalancarono e lei esclamò una sola parola, "__".
 Radunò il villaggio e, per i successivi 100 giorni, su sua richiesta, gli abitanti cercarono nella foresta un __.
 Nel 101° giorno, il bambino più giovane del villaggio trovò ciò che stavano cercando e tutti corsero dalla donna saggia per donarglielo.
-Con un sorriso da un orecchio all’altro, e cantando canti di festa, la donna saggia guardò i suoi compaesani e disse: "Ora è giunto il tempo del banchetto - nessuno rimarrà mai più senza _!" Ci fu grande gioia e celebrazione.")
+Con un sorriso da un orecchio all’altro, e cantando canti di festa, la donna saggia guardò i suoi compaesani e disse: "Ora è giunto il tempo del banchetto - nessuno rimarrà mai più senza __!" Ci fu grande gioia e celebrazione.")
 
 parole = random.choices(lista_parole, k=5)
 for i in parole:
